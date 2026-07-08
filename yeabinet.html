@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ye'abinet — Cognitive Development Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #534AB7;
+      --purple-dark: #3C3489;
+      --purple-deeper: #26215C;
+      --purple-light: #EEEDFE;
+      --purple-mid: #AFA9EC;
+      --text: #1a1a18;
+      --text-muted: #5a5a54;
+      --text-hint: #9e9e96;
+      --surface: #ffffff;
+      --bg: #f7f8f5;
+      --border: rgba(0,0,0,0.08);
+      --radius-pill: 999px;
+      --radius-card: 16px;
+    }
+
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── NAV ── */
+    .navbar {
+      background: var(--surface);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; position: sticky; top: 0; z-index: 100;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-block {
+      background: var(--purple); color: #fff;
+      font-size: 13px; font-weight: 800; padding: 6px 12px;
+      border-radius: 8px; letter-spacing: 0.02em;
+    }
+    .nav-brand-name { font-size: 16px; font-weight: 700; color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+    .nav-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--purple); font-weight: 500; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .btn-join {
+      background: var(--purple); color: #fff;
+      font-size: 13px; font-weight: 600; padding: 8px 22px;
+      border-radius: var(--radius-pill); border: none; cursor: pointer;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-join:hover { opacity: 0.88; }
+    .lang-toggle {
+      display: flex; align-items: center; gap: 3px;
+      background: var(--purple-light); border-radius: var(--radius-pill); padding: 3px;
+    }
+    .lang-btn {
+      font-size: 11px; font-weight: 500; padding: 3px 10px;
+      border-radius: var(--radius-pill); border: none; cursor: pointer;
+      background: transparent; color: var(--purple-dark); transition: all 0.18s;
+    }
+    .lang-btn.active { background: var(--purple); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--surface);
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+    }
+    .hero-left {
+      padding: 5rem 3rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-name-block {
+      background: var(--purple); display: inline-block;
+      padding: 1.25rem 2rem; margin-bottom: 2rem;
+      border-radius: 4px;
+    }
+    .hero-name-block h1 {
+      font-size: clamp(36px, 5vw, 56px); font-weight: 800;
+      color: #fff; line-height: 1.05; letter-spacing: -0.01em;
+    }
+    .hero-name-block h1 span { display: block; font-weight: 400; font-size: 0.75em; opacity: 0.85; }
+    .hero-tagline {
+      font-size: 16px; font-style: italic; font-weight: 500;
+      color: var(--text-muted); max-width: 360px; line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--purple); color: #fff;
+      font-size: 14px; font-weight: 600; padding: 13px 32px;
+      border-radius: 4px; border: none; cursor: pointer;
+      text-decoration: none; transition: opacity 0.2s; width: fit-content;
+      letter-spacing: 0.02em;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--purple);
+      font-size: 14px; font-weight: 600; padding: 13px 28px;
+      border-radius: 4px; border: 2px solid var(--purple);
+      cursor: pointer; text-decoration: none; transition: all 0.2s; width: fit-content;
+    }
+    .btn-outline:hover { background: var(--purple-light); }
+    .hero-right {
+      background: var(--bg);
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-top: 3rem; overflow: hidden; position: relative;
+    }
+    .hero-photo-placeholder {
+      width: 80%; max-width: 340px;
+      background: var(--purple-light); border-radius: 12px 12px 0 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; padding: 3rem 1rem;
+      color: var(--purple-mid); font-size: 13px; text-align: center; min-height: 360px;
+    }
+    .hero-photo-placeholder i { font-size: 56px; color: var(--purple-mid); }
+    .hero-badge-float {
+      position: absolute; top: 2rem; right: 2rem;
+      background: var(--purple); color: #fff;
+      font-size: 11px; font-weight: 600; padding: 6px 14px;
+      border-radius: var(--radius-pill);
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--purple-deeper);
+      display: flex; align-items: center; justify-content: center;
+      gap: 4rem; padding: 2rem; flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 800; color: #fff; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+    /* ── SECTION ── */
+    .section { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+    .section-center { text-align: center; }
+    .section-tag {
+      display: inline-block; background: var(--purple-light); color: var(--purple-dark);
+      font-size: 11px; font-weight: 600; padding: 4px 14px;
+      border-radius: var(--radius-pill); margin-bottom: 0.75rem; letter-spacing: 0.05em;
+    }
+    .section-title { font-size: 26px; font-weight: 700; margin-bottom: 0.5rem; }
+    .section-sub { font-size: 14px; color: var(--text-muted); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.75; }
+
+    /* ── SKILLS GRID ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+    .skill-card {
+      background: var(--surface); border-radius: var(--radius-card);
+      border: 0.5px solid var(--border); padding: 1.5rem;
+      transition: transform 0.15s, border-color 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-3px); border-color: var(--purple-mid); }
+    .skill-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--purple-light); color: var(--purple);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 1rem;
+    }
+    .skill-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .skill-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── HOW IT WORKS ── */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; }
+    .step { padding: 2rem; text-align: center; position: relative; }
+    .step:not(:last-child)::after {
+      content: ''; position: absolute; top: 2.75rem; right: -1px;
+      width: 2px; height: 40px; background: var(--border);
+    }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--purple); color: #fff;
+      font-size: 20px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .step h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .step p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── SPLIT FEATURE ── */
+    .split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .split-text h2 { font-size: 26px; font-weight: 700; line-height: 1.3; margin-bottom: 1rem; }
+    .split-text p { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+    .feature-list { display: flex; flex-direction: column; gap: 10px; }
+    .feature-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-muted); }
+    .feature-item i { color: var(--purple); font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .split-visual {
+      background: var(--purple-light); border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 280px; font-size: 13px; color: var(--purple-mid);
+      flex-direction: column; gap: 12px; padding: 2rem;
+    }
+    .split-visual i { font-size: 52px; color: var(--purple-mid); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .testimonial {
+      background: var(--surface); border-radius: var(--radius-card);
+      border: 0.5px solid var(--border); padding: 1.5rem;
+    }
+    .testimonial-quote { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 10px; }
+    .testimonial-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--purple-light); color: var(--purple);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+    }
+    .testimonial-name { font-size: 13px; font-weight: 600; }
+    .testimonial-role { font-size: 11px; color: var(--text-hint); }
+    .stars { color: var(--purple); font-size: 13px; margin-bottom: 0.75rem; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--purple-deeper);
+      margin: 0 2rem 4rem; border-radius: 20px;
+      padding: 3.5rem 3rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .cta-band h2 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+    .cta-band p { font-size: 14px; color: rgba(255,255,255,0.7); max-width: 380px; line-height: 1.75; }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--purple-deeper);
+      font-size: 14px; font-weight: 700; padding: 13px 32px;
+      border-radius: 4px; border: none; cursor: pointer;
+      text-decoration: none; transition: opacity 0.2s; white-space: nowrap;
+    }
+    .btn-white:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--purple-deeper); color: rgba(255,255,255,0.65);
+      padding: 2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-brand { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .footer-copy { font-size: 11px; }
+    .footer-back {
+      font-size: 12px; color: var(--purple-mid); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .footer-back:hover { color: #fff; }
+
+    /* ── LANG VISIBILITY ── */
+    .lang-en { display: none; }
+    .lang-am { display: block; }
+    .en-active .lang-en { display: block; }
+    .en-active .lang-am { display: none; }
+    .il-en { display: none; }
+    .il-am { display: inline; }
+    .en-active .il-en { display: inline; }
+    .en-active .il-am { display: none; }
+
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .split { grid-template-columns: 1fr; }
+      .stats-strip { gap: 2rem; }
+      .nav-links { display: none; }
+      .step:not(:last-child)::after { display: none; }
+      .cta-band { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo-block">YA</div>
+      <span class="nav-brand-name">Ye'abinet</span>
+    </a>
+    <div class="nav-links">
+      <a href="#" class="active"><span class="il-am">ዋና ገጽ</span><span class="il-en">Home</span></a>
+      <a href="#"><span class="il-am">ስለ እኛ</span><span class="il-en">About Us</span></a>
+      <a href="#"><span class="il-am">ፕሮግራሞች</span><span class="il-en">Programs</span></a>
+      <a href="#"><span class="il-am">ክህሎቶች</span><span class="il-en">Skills</span></a>
+      <a href="#"><span class="il-am">ያግኙን</span><span class="il-en">Contact</span></a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-am" onclick="setLang('am')">አማ</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="https://yeabinet.substack.com" target="_blank" class="btn-join">
+        <span class="il-am">ይቀላቀሉ</span><span class="il-en">Join Now</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO — AMHARIC -->
+  <section class="hero lang-am">
+    <div class="hero-left">
+      <div class="hero-name-block">
+        <h1>YE'ABINET<span>ወጣቶች ማዕከል</span></h1>
+      </div>
+      <p class="hero-tagline">ልዩ የትምህርት ዘዴዎቻቸውን ባገናዘበ መልኩ ወጣቶች ክህሎት ገንብተው፣ ድምፃቸውን ያሰሙበት መድረክ።</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="https://yeabinet.substack.com" target="_blank" class="btn-primary">
+          <span>ይቀላቀሉ</span> <i class="ti ti-arrow-right"></i>
+        </a>
+        <a href="#" class="btn-outline">ተጨማሪ ይወቁ</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-badge-float">ዕድሜ 14–18</div>
+      <div class="hero-photo-placeholder">
+        <i class="ti ti-photo"></i>
+        <span>የወጣቶች ፎቶ ይጨምሩ</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO — ENGLISH -->
+  <section class="hero lang-en">
+    <div class="hero-left">
+      <div class="hero-name-block">
+        <h1>YE'ABINET<span>Youth Platform</span></h1>
+      </div>
+      <p class="hero-tagline">We believe the unique learning styles of young people should be considered when planning and implementing skill development activities.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="https://yeabinet.substack.com" target="_blank" class="btn-primary">
+          <span>Join Now</span> <i class="ti ti-arrow-right"></i>
+        </a>
+        <a href="#" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-badge-float">Ages 14–18</div>
+      <div class="hero-photo-placeholder">
+        <i class="ti ti-photo"></i>
+        <span>Add youth photo here</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="stat-num">2,400+</div>
+      <div class="stat-label"><span class="il-am">ወጣቶች</span><span class="il-en">Young members</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">18+</div>
+      <div class="stat-label"><span class="il-am">የክህሎት ፕሮግራሞች</span><span class="il-en">Skill programs</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">95%</div>
+      <div class="stat-label"><span class="il-am">የወጣቶች እርካታ</span><span class="il-en">Youth satisfaction</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label"><span class="il-am">ሀገሮች</span><span class="il-en">Countries reached</span></div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-center">
+      <span class="section-tag"><span class="il-am">ፕሮግራሞቻችን</span><span class="il-en">OUR PROGRAMS</span></span>
+      <h2 class="section-title lang-am">ወጣቶች የሚያዳብሯቸው ክህሎቶች</h2>
+      <h2 class="section-title lang-en">Skills young people build with us</h2>
+      <p class="section-sub lang-am">ወጣቶች ዕለት ተዕለት ሕይወታቸውን ለማሻሻል የሚረዷቸው ተግባራዊ ክህሎቶች።</p>
+      <p class="section-sub lang-en">Practical, real-world skills that help young people thrive in education, work, and community life.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-microphone-2"></i></div>
+        <h3><span class="il-am">የህዝብ ንግግር</span><span class="il-en">Public Speaking</span></h3>
+        <p><span class="il-am">ሃሳባቸውን በግልጽ እና በልበ-ሙሉነት የሚያሰሙበት ክህሎት።</span><span class="il-en">Build confidence to express ideas clearly in front of any audience.</span></p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-pencil"></i></div>
+        <h3><span class="il-am">የፈጠራ ጽሑፍ</span><span class="il-en">Creative Writing</span></h3>
+        <p><span class="il-am">ታሪኮች፣ ድርሰቶች እና ሃሳቦቻቸውን ለዓለም ያካፍሉ።</span><span class="il-en">Write stories, essays, and share ideas that connect with the world.</span></p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-device-laptop"></i></div>
+        <h3><span class="il-am">ዲጂታል ክህሎቶች</span><span class="il-en">Digital Skills</span></h3>
+        <p><span class="il-am">ቴክኖሎጂን ለፈጠራ እና ለሥራ የሚጠቀሙበትን ዕድል ያዳብሩ።</span><span class="il-en">Use technology as a creative and professional tool for the future.</span></p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-users"></i></div>
+        <h3><span class="il-am">የቡድን አመራር</span><span class="il-en">Team Leadership</span></h3>
+        <p><span class="il-am">ቡድናቸውን አቅጣጫ ሰጥተው የሚያሳዩ ወጣት መሪዎች።</span><span class="il-en">Lead with vision, listen well, and inspire those around them.</span></p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-message-circle-2"></i></div>
+        <h3><span class="il-am">ትችት እና ግብረ-መልስ</span><span class="il-en">Peer Feedback</span></h3>
+        <p><span class="il-am">ሌሎችን ማዳመጥ፣ ምክር መስጠት እና ለዕድገት መቀበል።</span><span class="il-en">Give and receive meaningful feedback to grow together as a community.</span></p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-bulb"></i></div>
+        <h3><span class="il-am">ፖሊሲ እና ሐሳብ</span><span class="il-en">Critical Thinking</span></h3>
+        <p><span class="il-am">ወሳኝ ጉዳዮችን ከሁሉም አቅጣጫ ማጥናት እና ሐሳብ ማቅረብ።</span><span class="il-en">Analyze issues from multiple angles and form reasoned arguments.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div style="background: var(--surface); padding: 4rem 0;">
+    <div class="section" style="padding-top:0; padding-bottom:0;">
+      <div class="section-center">
+        <span class="section-tag"><span class="il-am">እንዴት ይሠራል</span><span class="il-en">HOW IT WORKS</span></span>
+        <h2 class="section-title lang-am">ወደ Ye'abinet እንዴት ይቀላቀሉ</h2>
+        <h2 class="section-title lang-en">How you join Ye'abinet</h2>
+        <p class="section-sub lang-am">ቀላል ሂደት — ተመዝግቡ፣ ይሳተፉ፣ ያሳድጉ።</p>
+        <p class="section-sub lang-en">A simple process — sign up, participate, and grow alongside your peers.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3><span class="il-am">ይመዝገቡ</span><span class="il-en">Sign Up</span></h3>
+          <p><span class="il-am">Substack ላይ ወይም ቅጹን ሞልተው ይቀላቀሉ።</span><span class="il-en">Subscribe on Substack or fill in our short form to get started.</span></p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3><span class="il-am">ፕሮግራም ይምረጡ</span><span class="il-en">Choose a Program</span></h3>
+          <p><span class="il-am">ፍላጎትዎን የሚወክል ፕሮግራም ይምረጡ።</span><span class="il-en">Pick the skill area that matches your interests and goals.</span></p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3><span class="il-am">ይሳተፉ</span><span class="il-en">Participate</span></h3>
+          <p><span class="il-am">ከእኩዮቻቸው ጋር ይሥሩ፣ ሃሳብ ያካፍሉ።</span><span class="il-en">Work with peers, share ideas, and give and receive feedback.</span></p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3><span class="il-am">ያሳዩ</span><span class="il-en">Showcase</span></h3>
+          <p><span class="il-am">ሥራዎቻቸውን ለማህበረሰቡ ያሳዩ።</span><span class="il-en">Present your work to the wider Ye'abinet community.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPLIT FEATURE -->
+  <div class="section">
+    <div class="split">
+      <div class="split-text lang-am">
+        <h2>ለምን Ye'abinet ትምህርት ከሌሎች ይለያል?</h2>
+        <p>ወጣቶችን ያዕምሮ ብቻ ሳይሆን ሙሉ ሰው ሆነው እንዲያሳድጉ — ሰላማዊ ማህበረሰብ ለመገንባት።</p>
+        <div class="feature-list">
+          <div class="feature-item"><i class="ti ti-check"></i> <span>ወጣቶቹ ድምፃቸውን ያሰሙበት ደህንነቱ የተጠበቀ ቦታ</span></div>
+          <div class="feature-item"><i class="ti ti-check"></i> <span>ተግባራዊ ፕሮጀክቶች — ቲዎሪ ብቻ አይደለም</span></div>
+          <div class="feature-item"><i class="ti ti-check"></i> <span>ከሁሉም አካባቢ ካሉ እኩዮቻቸው ጋር ግንኙነት</span></div>
+          <div class="feature-item"><i class="ti ti-check"></i> <span>ባለሙያ አማካሪዎች ድጋፍ</span></div>
+        </div>
+        <br/>
+        <a href="https://yeabinet.substack.com" target="_blank" class="btn-primary">
+          <span>ይቀላቀሉ</span> <i class="ti ti-arrow-right"></i>
+        </a>
+      </div>
+      <div class="split-text lang-en">
+        <h2>Why Ye'abinet is different from other programs</h2>
+        <p>We develop the whole young person — mind, voice, and character — because peaceful communities are built by people who can think, speak, and listen well.</p>
+        <div class="feature-list">
+          <div class="feature-item"><i class="ti ti-check"></i> <span>A safe space for young people to speak up and be heard</span></div>
+          <div class="feature-item"><i class="ti ti-check"></i> <span>Real projects — not just theory and lectures</span></div>
+          <div class="feature-item"><i class="ti ti-check"></i> <span>Connections with peers from diverse backgrounds</span></div>
+          <div class="feature-item"><i class="ti ti-check"></i> <span>Mentorship from experienced practitioners</span></div>
+        </div>
+        <br/>
+        <a href="https://yeabinet.substack.com" target="_blank" class="btn-primary">
+          <span>Join Now</span> <i class="ti ti-arrow-right"></i>
+        </a>
+      </div>
+      <div class="split-visual">
+        <i class="ti ti-photo"></i>
+        <span style="font-size:13px; color:var(--purple-mid);">
+          <span class="il-am">ፎቶ ወይም ቪዲዮ ይጨምሩ</span>
+          <span class="il-en">Add photo or video here</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div style="background: var(--surface); padding: 4rem 0;">
+    <div class="section" style="padding-top:0; padding-bottom:0;">
+      <div class="section-center">
+        <span class="section-tag"><span class="il-am">ምስክርነቶች</span><span class="il-en">TESTIMONIALS</span></span>
+        <h2 class="section-title lang-am">ወጣቶቹ ምን ይላሉ</h2>
+        <h2 class="section-title lang-en">What young people say</h2>
+        <p class="section-sub lang-am"></p>
+        <p class="section-sub lang-en"></p>
+      </div>
+      <div class="testimonials">
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote lang-am">"Ye'abinet ድምፄን ማሰማት እንዳችል አስተምሮኛል። አሁን ያሰብኩትን ለሌሎች ማካፈል አልፈራም።"</p>
+          <p class="testimonial-quote lang-en">"Ye'abinet taught me that my voice matters. I'm no longer afraid to share what I think with others."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">HG</div>
+            <div>
+              <div class="testimonial-name">Hana G.</div>
+              <div class="testimonial-role"><span class="il-am">ዕድሜ 16, አዲስ አበባ</span><span class="il-en">Age 16, Addis Ababa</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote lang-am">"ፕሮጀክቱ ላይ ከሰራሁ በኋላ ትምህርት ቤት ውስጥ የቡድን አመራር ሃላፊነት ወሰድኩ።"</p>
+          <p class="testimonial-quote lang-en">"After working on my project here, I took on a leadership role at school. The feedback I got here made all the difference."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SK</div>
+            <div>
+              <div class="testimonial-name">Samuel K.</div>
+              <div class="testimonial-role"><span class="il-am">ዕድሜ 17, ሃዋሳ</span><span class="il-en">Age 17, Hawassa</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote lang-am">"ዲጂታል ክህሎቶቼን ያሳደጉ ሲሆን አሁን ለወደፊቴ የበለጠ ዝግጁ ነኝ።"</p>
+          <p class="testimonial-quote lang-en">"The digital skills program opened my eyes to what I can build. I feel genuinely prepared for the future now."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MT</div>
+            <div>
+              <div class="testimonial-name">Miriam T.</div>
+              <div class="testimonial-role"><span class="il-am">ዕድሜ 15, ድሬዳዋ</span><span class="il-en">Age 15, Dire Dawa</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div style="padding: 4rem 0 0;">
+    <div class="cta-band">
+      <div>
+        <h2 class="lang-am">ለመቀላቀል ዝግጁ ነዎት?</h2>
+        <h2 class="lang-en">Ready to Join?</h2>
+        <p class="lang-am">ዛሬ ይቀላቀሉ — ድምፅዎን ያሰሙ፣ ክህሎቶቻቸውን ይገንቡ እና ወደ ፊት ያልፉ።</p>
+        <p class="lang-en">Join today — raise your voice, build real skills, and grow alongside a community of young changemakers.</p>
+        <br/>
+        <a href="https://yeabinet.substack.com" target="_blank" class="btn-white">
+          <span class="il-am">አሁን ይቀላቀሉ</span>
+          <span class="il-en">Join Now</span>
+          <i class="ti ti-arrow-right"></i>
+        </a>
+      </div>
+      <div style="font-size: 80px; opacity: 0.15; color: #fff;">
+        <i class="ti ti-school"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <div class="footer-brand">Ye'abinet — Cognitive Development Network</div>
+      <div class="footer-copy lang-am">© 2026 ኮግኒቲቭ ዴቨሎፕመንት ኔትወርክ። መብቱ የተጠበቀ ነው።</div>
+      <div class="footer-copy lang-en">© 2026 Cognitive Development Network. All rights reserved.</div>
+    </div>
+    <a href="index.html" class="footer-back">
+      <i class="ti ti-arrow-left"></i>
+      <span class="il-am">ዋና ገጽ ተመለስ</span><span class="il-en">Back to main site</span>
+    </a>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      var isEn = lang === 'en';
+      document.documentElement.lang = lang;
+      document.body.classList.toggle('en-active', isEn);
+      document.getElementById('btn-en').classList.toggle('active', isEn);
+      document.getElementById('btn-am').classList.toggle('active', !isEn);
+    }
+  </script>
+</body>
+</html>
