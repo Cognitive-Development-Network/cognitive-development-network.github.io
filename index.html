@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="am">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -216,14 +216,11 @@
     }
     .footer-social:hover { border-color: var(--border-hover); color: var(--text); }
 
-    /* LANG VISIBILITY */
-    .en { display: block; }
-    .am { display: none; }
-    .am-active .en { display: none; }
-    .am-active .am { display: block; }
-    span.en, span.am { display: inline; }
-    .am-active span.en { display: none; }
-    .am-active span.am { display: inline; }
+    /* LANG VISIBILITY — Amharic is default, English hidden until toggled */
+    .lang-en { display: none; }
+    .lang-am { display: block; }
+    .en-active .lang-en { display: block; }
+    .en-active .lang-am { display: none; }
 
     @media (max-width: 600px) {
       nav { border-radius: 16px; }
@@ -241,136 +238,183 @@
       <div class="nav-logo"><i class="ti ti-brain"></i></div>
       <div>
         <div class="nav-name">Cognitive Development Network</div>
-        <div class="nav-tagline en">Peaceful coexistence through learning</div>
-        <div class="nav-tagline am">በትምህርት ሰላማዊ አብሮ መኖር</div>
+        <div class="nav-tagline lang-am">በትምህርት ሰላማዊ አብሮ መኖር</div>
+        <div class="nav-tagline lang-en">Peaceful coexistence through learning</div>
       </div>
     </div>
     <div class="nav-links">
-      <a href="#"><span class="en">About</span><span class="am">ስለ እኛ</span></a>
-      <a href="#"><span class="en">Contact</span><span class="am">ያግኙን</span></a>
-      <a href="#"><span class="en">Newsletter</span><span class="am">ዜና ደብዳቤ</span></a>
+      <a href="#" class="lang-am">ስለ እኛ</a>
+      <a href="#" class="lang-en">About</a>
+      <a href="#" class="lang-am">ያግኙን</a>
+      <a href="#" class="lang-en">Contact</a>
+      <a href="#" class="lang-am">ዜና ደብዳቤ</a>
+      <a href="#" class="lang-en">Newsletter</a>
     </div>
     <div class="lang-toggle">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" id="btn-am" onclick="setLang('am')">አማ</button>
+      <button class="lang-btn active" id="btn-am" onclick="setLang('am')">አማ</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO — AMHARIC -->
+  <section class="hero lang-am">
     <div class="hero-decor1"></div>
     <div class="hero-decor2"></div>
-    <div class="hero-badge">
-      <i class="ti ti-leaf"></i>
-      <span class="en">Peaceful Coexistence</span>
-      <span class="am">ሰላማዊ አብሮ መኖር</span>
-    </div>
-    <h1 class="en">Cultivating minds for a peaceful future</h1>
-    <h1 class="am">ለሰላማዊ ወደፊት ልቦናዎችን ማዳበር</h1>
-    <p class="en">We create content, tools, and conversations that nurture curiosity, build skills, and bring communities closer together — one mind at a time.</p>
-    <p class="am">የማወቅ ጉጉትን የሚያጎለብቱ፣ ክህሎቶችን የሚገነቡ እና ማህበረሰቦችን የሚያቀራርቡ ይዘቶችን፣ መሳሪያዎችን እና ውይይቶችን እንፈጥራለን።</p>
-    <a href="#" class="hero-cta">
-      <span class="en">Explore our content</span>
-      <span class="am">ይዘቶቻችንን ያስሱ</span>
-      <i class="ti ti-arrow-right"></i>
-    </a>
+    <div class="hero-badge"><i class="ti ti-leaf"></i> ሰላማዊ አብሮ መኖር</div>
+    <h1>ለሰላማዊ ወደፊት ልቦናዎችን ማዳበር</h1>
+    <p>የማወቅ ጉጉትን የሚያጎለብቱ፣ ክህሎቶችን የሚገነቡ እና ማህበረሰቦችን የሚያቀራርቡ ይዘቶችን፣ መሳሪያዎችን እና ውይይቶችን እንፈጥራለን።</p>
+    <a href="#" class="hero-cta">ይዘቶቻችንን ያስሱ <i class="ti ti-arrow-right"></i></a>
+  </section>
+
+  <!-- HERO — ENGLISH -->
+  <section class="hero lang-en">
+    <div class="hero-decor1"></div>
+    <div class="hero-decor2"></div>
+    <div class="hero-badge"><i class="ti ti-leaf"></i> Peaceful Coexistence</div>
+    <h1>Cultivating minds for a peaceful future</h1>
+    <p>We create content, tools, and conversations that nurture curiosity, build skills, and bring communities closer together — one mind at a time.</p>
+    <a href="#" class="hero-cta">Explore our content <i class="ti ti-arrow-right"></i></a>
   </section>
 
   <!-- SECTION LABEL -->
-  <p class="section-label en">Three windows — one for every curious mind</p>
-  <p class="section-label am">ሶስት መስኮቶች — ለእያንዳንዱ ጉጉ አዕምሮ</p>
+  <p class="section-label lang-am">ሶስት መስኮቶች — ለእያንዳንዱ ጉጉ አዕምሮ</p>
+  <p class="section-label lang-en">Three windows — one for every curious mind</p>
 
-  <!-- WINDOWS -->
-  <div class="windows">
+  <!-- WINDOWS — AMHARIC -->
+  <div class="windows lang-am">
 
-    <!-- Kassina Kids -->
     <div class="card">
       <div class="card-icon green"><i class="ti ti-books"></i></div>
       <div>
-        <span class="card-tag green en">Ages 7–11 &amp; Parents</span>
-        <span class="card-tag green am">ዕድሜ 7–11 እና ወላጆች</span>
+        <span class="card-tag green">ዕድሜ 7–11 እና ወላጆች</span>
         <h2>Kassina Kids</h2>
-        <p class="card-sub en">Children's books &amp; cognitive growth</p>
-        <p class="card-sub am">የህፃናት መጽሐፍት እና የአዕምሮ እድገት</p>
+        <p class="card-sub">የህፃናት መጽሐፍት እና የአዕምሮ እድገት</p>
       </div>
-      <p class="card-desc en">Story-driven books, a playful YouTube channel, and cognitive development resources designed to spark joy and curiosity in young minds.</p>
-      <p class="card-desc am">ወጣት አዕምሮዎች ውስጥ ደስታ እና ጉጉት ለመቀስቀስ የተዘጋጁ ታሪክ-ተኮር መጽሐፍት፣ ቀልጣፋ የዩቲዩብ ቻናል እና የእውቀት እድገት ሀብቶች።</p>
+      <p class="card-desc">ወጣት አዕምሮዎች ውስጥ ደስታ እና ጉጉት ለመቀስቀስ የተዘጋጁ ታሪክ-ተኮር መጽሐፍት፣ ቀልጣፋ የዩቲዩብ ቻናል እና የእውቀት እድገት ሀብቶች።</p>
       <div class="card-features">
-        <div class="card-feature green"><i class="ti ti-book"></i> <span class="en">Illustrated storybooks</span><span class="am">ምስላዊ ታሪክ መጽሐፍት</span></div>
-        <div class="card-feature green"><i class="ti ti-brand-youtube"></i> <span class="en">YouTube channel for kids</span><span class="am">ለህፃናት የዩቲዩብ ቻናል</span></div>
-        <div class="card-feature green"><i class="ti ti-puzzle"></i> <span class="en">Cognitive development tools</span><span class="am">የእውቀት እድገት መሳሪያዎች</span></div>
+        <div class="card-feature green"><i class="ti ti-book"></i> ምስላዊ ታሪክ መጽሐፍት</div>
+        <div class="card-feature green"><i class="ti ti-brand-youtube"></i> ለህፃናት የዩቲዩብ ቻናል</div>
+        <div class="card-feature green"><i class="ti ti-puzzle"></i> የእውቀት እድገት መሳሪያዎች</div>
       </div>
       <div class="card-footer">
-        <span class="green en">Visit Kassina Kids</span>
-        <span class="green am">ካሲና ኪድስን ይጎብኙ</span>
+        <span class="green">ካሲና ኪድስን ይጎብኙ</span>
         <i class="ti ti-arrow-right" style="color:var(--teal)"></i>
       </div>
     </div>
 
-    <!-- Ye'abient -->
     <div class="card">
       <div class="card-icon purple"><i class="ti ti-school"></i></div>
       <div>
-        <span class="card-tag purple en">Ages 14–18</span>
-        <span class="card-tag purple am">ዕድሜ 14–18</span>
+        <span class="card-tag purple">ዕድሜ 14–18</span>
         <h2>Ye'abient</h2>
-        <p class="card-sub en">Youth skill development</p>
-        <p class="card-sub am">የወጣቶች ክህሎት ልማት</p>
+        <p class="card-sub">የወጣቶች ክህሎት ልማት</p>
       </div>
-      <p class="card-desc en">A platform for teens to build real-world skills, share their voices, and receive meaningful feedback on projects and ideas that matter to them.</p>
-      <p class="card-desc am">ታዳጊዎች እውነተኛ ክህሎቶቻቸውን ለመገንባት፣ ድምፃቸውን ለማሰማት እና ለፕሮጀክቶቻቸው ትርጉም ያለው ግብረ-መልስ ለማግኘት የሚጠቀሙበት መድረክ።</p>
+      <p class="card-desc">ታዳጊዎች እውነተኛ ክህሎቶቻቸውን ለመገንባት፣ ድምፃቸውን ለማሰማት እና ለፕሮጀክቶቻቸው ትርጉም ያለው ግብረ-መልስ ለማግኘት የሚጠቀሙበት መድረክ።</p>
       <div class="card-features">
-        <div class="card-feature purple"><i class="ti ti-tool"></i> <span class="en">Practical skill workshops</span><span class="am">ተግባራዊ የክህሎት ስልጠናዎች</span></div>
-        <div class="card-feature purple"><i class="ti ti-message-circle"></i> <span class="en">Peer feedback tools</span><span class="am">የእኩያ ግብረ-መልስ መሳሪያዎች</span></div>
-        <div class="card-feature purple"><i class="ti ti-trophy"></i> <span class="en">Project showcases</span><span class="am">የፕሮጀክት ትርዒቶች</span></div>
+        <div class="card-feature purple"><i class="ti ti-tool"></i> ተግባራዊ የክህሎት ስልጠናዎች</div>
+        <div class="card-feature purple"><i class="ti ti-message-circle"></i> የእኩያ ግብረ-መልስ መሳሪያዎች</div>
+        <div class="card-feature purple"><i class="ti ti-trophy"></i> የፕሮጀክት ትርዒቶች</div>
       </div>
       <div class="card-footer">
-        <span class="purple en">Visit Ye'abient</span>
-        <span class="purple am">የዓቢይንትን ይጎብኙ</span>
+        <span class="purple">የዓቢይንትን ይጎብኙ</span>
         <i class="ti ti-arrow-right" style="color:var(--purple)"></i>
       </div>
     </div>
 
-    <!-- Public Policy Podcast -->
     <div class="card">
       <div class="card-icon amber"><i class="ti ti-microphone-2"></i></div>
       <div>
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px;">
-          <span class="card-tag amber en">General Audience</span>
-          <span class="card-tag amber am">ለሁሉም ታዳሚ</span>
-          <span class="coming-badge"><i class="ti ti-clock" style="font-size:12px;"></i> <span class="en">Coming early 2027</span><span class="am">በ2027 መጀመሪያ</span></span>
+          <span class="card-tag amber">ለሁሉም ታዳሚ</span>
+          <span class="coming-badge"><i class="ti ti-clock" style="font-size:12px;"></i> በ2027 መጀመሪያ</span>
         </div>
-        <h2 class="en">Public Policy Podcast</h2>
-        <h2 class="am">የህዝብ ፖሊሲ ፖድካስት</h2>
-        <p class="card-sub en">Conversations that shape community</p>
-        <p class="card-sub am">ማህበረሰብን የሚቀርፁ ውይይቶች</p>
+        <h2>የህዝብ ፖሊሲ ፖድካስት</h2>
+        <p class="card-sub">ማህበረሰብን የሚቀርፁ ውይይቶች</p>
       </div>
-      <p class="card-desc en">In-depth, nuanced discussions on public policy topics that affect everyday life — hosted by thinkers, practitioners, and community voices.</p>
-      <p class="card-desc am">በዕለት ተዕለት ሕይወት ላይ ተጽዕኖ የሚያሳድሩ የህዝብ ፖሊሲ ጉዳዮች ላይ ጥልቅ፣ ዝርዝር ውይይቶች።</p>
+      <p class="card-desc">በዕለት ተዕለት ሕይወት ላይ ተጽዕኖ የሚያሳድሩ የህዝብ ፖሊሲ ጉዳዮች ላይ ጥልቅ፣ ዝርዝር ውይይቶች።</p>
       <div>
-        <p class="subscribe-label en">Get notified when we launch</p>
-        <p class="subscribe-label am">ስንጀምር ያሳውቁን</p>
+        <p class="subscribe-label">ስንጀምር ያሳውቁን</p>
         <div class="subscribe-row">
-          <input type="email" id="podcast-email" placeholder="your@email.com" />
-          <button onclick="handleSubscribe()"><span class="en">Notify me</span><span class="am">አሳውቀኝ</span></button>
+          <input type="email" id="podcast-email-am" placeholder="your@email.com" />
+          <button onclick="handleSubscribe('am')">አሳውቀኝ</button>
         </div>
-        <p class="sub-confirm" id="sub-confirm">
-          <span class="en">You're on the list!</span>
-          <span class="am">ተመዝግበዋል!</span>
-        </p>
+        <p class="sub-confirm" id="sub-confirm-am">ተመዝግበዋል!</p>
       </div>
     </div>
 
-  </div><!-- /windows -->
+  </div>
 
-  <!-- FOOTER -->
-  <footer>
+  <!-- WINDOWS — ENGLISH -->
+  <div class="windows lang-en">
+
+    <div class="card">
+      <div class="card-icon green"><i class="ti ti-books"></i></div>
+      <div>
+        <span class="card-tag green">Ages 7–11 &amp; Parents</span>
+        <h2>Kassina Kids</h2>
+        <p class="card-sub">Children's books &amp; cognitive growth</p>
+      </div>
+      <p class="card-desc">Story-driven books, a playful YouTube channel, and cognitive development resources designed to spark joy and curiosity in young minds.</p>
+      <div class="card-features">
+        <div class="card-feature green"><i class="ti ti-book"></i> Illustrated storybooks</div>
+        <div class="card-feature green"><i class="ti ti-brand-youtube"></i> YouTube channel for kids</div>
+        <div class="card-feature green"><i class="ti ti-puzzle"></i> Cognitive development tools</div>
+      </div>
+      <div class="card-footer">
+        <span class="green">Visit Kassina Kids</span>
+        <i class="ti ti-arrow-right" style="color:var(--teal)"></i>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon purple"><i class="ti ti-school"></i></div>
+      <div>
+        <span class="card-tag purple">Ages 14–18</span>
+        <h2>Ye'abient</h2>
+        <p class="card-sub">Youth skill development</p>
+      </div>
+      <p class="card-desc">A platform for teens to build real-world skills, share their voices, and receive meaningful feedback on projects and ideas that matter to them.</p>
+      <div class="card-features">
+        <div class="card-feature purple"><i class="ti ti-tool"></i> Practical skill workshops</div>
+        <div class="card-feature purple"><i class="ti ti-message-circle"></i> Peer feedback tools</div>
+        <div class="card-feature purple"><i class="ti ti-trophy"></i> Project showcases</div>
+      </div>
+      <div class="card-footer">
+        <span class="purple">Visit Ye'abient</span>
+        <i class="ti ti-arrow-right" style="color:var(--purple)"></i>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon amber"><i class="ti ti-microphone-2"></i></div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px;">
+          <span class="card-tag amber">General Audience</span>
+          <span class="coming-badge"><i class="ti ti-clock" style="font-size:12px;"></i> Coming early 2027</span>
+        </div>
+        <h2>Public Policy Podcast</h2>
+        <p class="card-sub">Conversations that shape community</p>
+      </div>
+      <p class="card-desc">In-depth, nuanced discussions on public policy topics that affect everyday life — hosted by thinkers, practitioners, and community voices.</p>
+      <div>
+        <p class="subscribe-label">Get notified when we launch</p>
+        <div class="subscribe-row">
+          <input type="email" id="podcast-email-en" placeholder="your@email.com" />
+          <button onclick="handleSubscribe('en')">Notify me</button>
+        </div>
+        <p class="sub-confirm" id="sub-confirm-en">You're on the list!</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER — AMHARIC -->
+  <footer class="lang-am">
     <div class="footer-left">
       <div class="nav-logo"><i class="ti ti-brain"></i></div>
       <div>
         <div class="footer-brand">Cognitive Development Network</div>
-        <div class="footer-copy en">© 2026 Cognitive Development Network. All rights reserved.</div>
-        <div class="footer-copy am">© 2026 ኮግኒቲቭ ዴቨሎፕመንት ኔትወርክ። መብቱ የተጠበቀ ነው።</div>
+        <div class="footer-copy">© 2026 ኮግኒቲቭ ዴቨሎፕመንት ኔትወርክ። መብቱ የተጠበቀ ነው።</div>
       </div>
     </div>
     <div class="footer-socials">
@@ -382,22 +426,40 @@
     </div>
   </footer>
 
-</div><!-- /page -->
+  <!-- FOOTER — ENGLISH -->
+  <footer class="lang-en">
+    <div class="footer-left">
+      <div class="nav-logo"><i class="ti ti-brain"></i></div>
+      <div>
+        <div class="footer-brand">Cognitive Development Network</div>
+        <div class="footer-copy">© 2026 Cognitive Development Network. All rights reserved.</div>
+      </div>
+    </div>
+    <div class="footer-socials">
+      <a href="#" class="footer-social" title="YouTube"><i class="ti ti-brand-youtube"></i></a>
+      <a href="#" class="footer-social" title="Instagram"><i class="ti ti-brand-instagram"></i></a>
+      <a href="#" class="footer-social" title="X / Twitter"><i class="ti ti-brand-x"></i></a>
+      <a href="#" class="footer-social" title="Facebook"><i class="ti ti-brand-facebook"></i></a>
+      <a href="#" class="footer-social" title="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+    </div>
+  </footer>
+
+</div>
 
 <script>
-  var currentLang = 'en';
   function setLang(lang) {
-    currentLang = lang;
-    document.body.classList.toggle('am-active', lang === 'am');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.getElementById('btn-am').classList.toggle('active', lang === 'am');
+    var isEn = lang === 'en';
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('en-active', isEn);
+    document.getElementById('btn-en').classList.toggle('active', isEn);
+    document.getElementById('btn-am').classList.toggle('active', !isEn);
   }
-  function handleSubscribe() {
-    var el = document.getElementById('podcast-email');
+  function handleSubscribe(lang) {
+    var el = document.getElementById('podcast-email-' + lang);
     var email = el.value.trim();
     if (!email || !email.includes('@')) return;
     el.value = '';
-    var msg = document.getElementById('sub-confirm');
+    var msg = document.getElementById('sub-confirm-' + lang);
     msg.style.display = 'block';
     setTimeout(function() { msg.style.display = 'none'; }, 4000);
   }
