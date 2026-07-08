@@ -175,6 +175,19 @@
       font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: var(--radius-pill);
     }
 
+    /* SUBSTACK BUTTON */
+    .substack-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 500; padding: 9px 16px;
+      border-radius: var(--radius-pill); text-decoration: none;
+      transition: opacity 0.2s; width: 100%; justify-content: center;
+    }
+    .substack-btn i { font-size: 15px; }
+    .substack-btn.green { background: var(--teal-light); color: var(--teal-dark); }
+    .substack-btn.green:hover { opacity: 0.8; }
+    .substack-btn.purple { background: var(--purple-light); color: var(--purple-dark); }
+    .substack-btn.purple:hover { opacity: 0.8; }
+
     /* SUBSCRIBE */
     .subscribe-label { font-size: 12px; font-weight: 500; margin-bottom: 7px; }
     .subscribe-row { display: flex; gap: 6px; }
@@ -300,6 +313,9 @@
         <span class="green">ካሲና ኪድስን ይጎብኙ</span>
         <i class="ti ti-arrow-right" style="color:var(--teal)"></i>
       </div>
+      <a href="https://kassinakids.substack.com" target="_blank" class="substack-btn green">
+        <i class="ti ti-brand-substack"></i> በSubstack ይመዝገቡ
+      </a>
     </div>
 
     <div class="card">
@@ -319,6 +335,9 @@
         <span class="purple">የዓቢይንትን ይጎብኙ</span>
         <i class="ti ti-arrow-right" style="color:var(--purple)"></i>
       </div>
+      <a href="https://yeabient.substack.com" target="_blank" class="substack-btn purple">
+        <i class="ti ti-brand-substack"></i> በSubstack ይመዝገቡ
+      </a>
     </div>
 
     <div class="card">
@@ -364,6 +383,9 @@
         <span class="green">Visit Kassina Kids</span>
         <i class="ti ti-arrow-right" style="color:var(--teal)"></i>
       </div>
+      <a href="https://kassinakids.substack.com" target="_blank" class="substack-btn green">
+        <i class="ti ti-brand-substack"></i> Subscribe on Substack
+      </a>
     </div>
 
     <div class="card">
@@ -383,6 +405,9 @@
         <span class="purple">Visit Ye'abient</span>
         <i class="ti ti-arrow-right" style="color:var(--purple)"></i>
       </div>
+      <a href="https://yeabient.substack.com" target="_blank" class="substack-btn purple">
+        <i class="ti ti-brand-substack"></i> Subscribe on Substack
+      </a>
     </div>
 
     <div class="card">
