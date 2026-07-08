@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kassina Kids — Cognitive Development Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #0F6E56;
+      --green-dark: #085041;
+      --green-deeper: #063d31;
+      --green-light: #E1F5EE;
+      --yellow: #F5A623;
+      --yellow-dark: #c47d0a;
+      --yellow-light: #FEF3DC;
+      --text: #1a1a18;
+      --text-muted: #5a5a54;
+      --text-hint: #9e9e96;
+      --surface: #ffffff;
+      --bg: #f7f8f5;
+      --border: rgba(0,0,0,0.08);
+      --radius-pill: 999px;
+      --radius-card: 16px;
+    }
+
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── NAV ── */
+    .navbar {
+      background: var(--green-deeper);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; position: sticky; top: 0; z-index: 100;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-circle {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--yellow); display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--green-deeper);
+    }
+    .nav-brand-name { font-size: 18px; font-weight: 700; color: #fff; }
+    .nav-brand-dot { color: var(--yellow); }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: #fff; font-weight: 500; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .btn-signup {
+      background: var(--yellow); color: var(--green-deeper);
+      font-size: 13px; font-weight: 600; padding: 8px 20px;
+      border-radius: var(--radius-pill); border: none; cursor: pointer;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-signup:hover { opacity: 0.88; }
+    .lang-toggle {
+      display: flex; align-items: center; gap: 3px;
+      background: rgba(255,255,255,0.12); border-radius: var(--radius-pill); padding: 3px;
+    }
+    .lang-btn {
+      font-size: 11px; font-weight: 500; padding: 3px 10px;
+      border-radius: var(--radius-pill); border: none; cursor: pointer;
+      background: transparent; color: rgba(255,255,255,0.7); transition: all 0.18s;
+    }
+    .lang-btn.active { background: #fff; color: var(--green-deeper); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green);
+      min-height: 480px; padding: 4rem 2rem 0;
+      display: flex; align-items: flex-end; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-inner { max-width: 1000px; width: 100%; display: flex; align-items: flex-end; gap: 2rem; }
+    .hero-text { flex: 1; padding-bottom: 3rem; }
+    .hero-doodle {
+      font-size: 28px; opacity: 0.5; margin-bottom: 1rem;
+      display: flex; gap: 1rem; color: var(--yellow-light);
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 44px); font-weight: 700; color: #fff;
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--yellow); }
+    .hero p { font-size: 15px; color: rgba(255,255,255,0.78); max-width: 420px; margin-bottom: 1.75rem; line-height: 1.75; }
+    .hero-btns { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--yellow); color: var(--green-deeper);
+      font-size: 14px; font-weight: 600; padding: 12px 28px;
+      border-radius: var(--radius-pill); border: none; cursor: pointer;
+      text-decoration: none; transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      background: transparent; color: #fff;
+      font-size: 14px; font-weight: 500; padding: 12px 24px;
+      border-radius: var(--radius-pill); border: 1.5px solid rgba(255,255,255,0.4);
+      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.8); }
+    .hero-stats { display: flex; gap: 2rem; margin-top: 2rem; }
+    .hero-stat { display: flex; align-items: center; gap: 10px; }
+    .hero-stat-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--yellow);
+    }
+    .hero-stat-num { font-size: 20px; font-weight: 700; color: #fff; }
+    .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+    .hero-image { flex-shrink: 0; width: 320px; display: flex; align-items: flex-end; }
+    .hero-image-placeholder {
+      width: 100%; height: 320px;
+      background: rgba(255,255,255,0.08); border-radius: 16px 16px 0 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      color: rgba(255,255,255,0.35); font-size: 13px; text-align: center; padding: 1rem;
+    }
+    .hero-image-placeholder i { font-size: 48px; color: rgba(255,255,255,0.2); }
+
+    /* ── SECTION WRAPPER ── */
+    .section { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+    .section-title { font-size: 24px; font-weight: 700; margin-bottom: 0.4rem; }
+    .section-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 2rem; }
+    .section-title-center { text-align: center; }
+
+    /* ── PROGRAMS BAND ── */
+    .programs-band {
+      background: var(--yellow-light); border-radius: 20px;
+      margin: 0 2rem; padding: 2.5rem;
+      display: grid; grid-template-columns: 220px 1fr 1fr 1fr; gap: 2rem; align-items: start;
+    }
+    .programs-label { font-size: 26px; font-weight: 700; color: var(--green); }
+    .programs-label p { font-size: 13px; font-weight: 400; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6; }
+    .program-item { padding: 0 0 0 1.5rem; border-left: 2px solid var(--yellow); }
+    .program-item-icon { font-size: 22px; color: var(--green); margin-bottom: 8px; }
+    .program-item h3 { font-size: 15px; font-weight: 600; color: var(--green); margin-bottom: 6px; }
+    .program-item p { font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    .learn-more { font-size: 12px; font-weight: 600; color: var(--green); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+    .learn-more:hover { text-decoration: underline; }
+
+    /* ── WHY DIFFERENT ── */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    .why-left h2 { font-size: 28px; font-weight: 700; line-height: 1.3; margin-bottom: 1rem; }
+    .why-left p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; }
+    .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .why-card {
+      background: var(--surface); border-radius: var(--radius-card);
+      border: 0.5px solid var(--border); padding: 1.25rem;
+    }
+    .why-card-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .why-card-icon.green { background: var(--green-light); color: var(--green); }
+    .why-card-icon.yellow { background: var(--yellow-light); color: var(--yellow-dark); }
+    .why-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .why-card p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── POPULAR CONTENT ── */
+    .content-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+    .content-card {
+      background: var(--surface); border-radius: var(--radius-card);
+      border: 0.5px solid var(--border); overflow: hidden;
+      transition: transform 0.15s, border-color 0.2s; cursor: pointer;
+    }
+    .content-card:hover { transform: translateY(-3px); border-color: rgba(0,0,0,0.15); }
+    .content-card-thumb {
+      height: 130px; background: var(--green-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px; color: var(--green); position: relative;
+    }
+    .content-card-thumb.yellow-bg { background: var(--yellow-light); color: var(--yellow-dark); }
+    .content-card-badge {
+      position: absolute; top: 8px; right: 8px;
+      background: var(--yellow); color: var(--green-deeper);
+      font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: var(--radius-pill);
+    }
+    .content-card-body { padding: 1rem; }
+    .content-card-body h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .content-card-body p { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5; }
+    .content-card-meta { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-hint); }
+
+    /* ── MOMENTS BAND ── */
+    .moments-band {
+      margin: 0 2rem; border-radius: 20px; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; min-height: 220px;
+    }
+    .moments-text {
+      background: var(--green); padding: 2.5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .moments-text h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
+    .moments-text p { font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 1.5rem; line-height: 1.7; }
+    .moments-image {
+      background: var(--green-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 60px; color: var(--green); flex-direction: column; gap: 8px;
+    }
+    .moments-image span { font-size: 13px; color: var(--text-muted); }
+
+    /* ── TEACHERS ── */
+    .teachers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.25rem; }
+    .teacher-card {
+      background: var(--surface); border-radius: var(--radius-card);
+      border: 0.5px solid var(--border); padding: 1.25rem; text-align: center;
+    }
+    .teacher-avatar {
+      width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 0.75rem;
+      display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700;
+      border: 3px solid var(--yellow);
+    }
+    .teacher-avatar.g { background: var(--green-light); color: var(--green); }
+    .teacher-avatar.y { background: var(--yellow-light); color: var(--yellow-dark); }
+    .teacher-card h3 { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .teacher-card p { font-size: 11px; color: var(--text-muted); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      margin: 0 2rem 4rem; border-radius: 20px;
+      background: var(--green); padding: 3rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .cta-band h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .cta-band p { font-size: 14px; color: rgba(255,255,255,0.75); max-width: 380px; line-height: 1.7; }
+    .cta-image { font-size: 80px; opacity: 0.25; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--green-deeper); color: rgba(255,255,255,0.7);
+      padding: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-brand { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .footer-copy { font-size: 11px; }
+    .footer-back { font-size: 12px; color: var(--yellow); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .footer-back:hover { text-decoration: underline; }
+
+    /* ── LANG VISIBILITY ── */
+    .lang-en { display: none; }
+    .lang-am { display: block; }
+    .en-active .lang-en { display: block; }
+    .en-active .lang-am { display: none; }
+    .il-en { display: none; }
+    .il-am { display: inline; }
+    .en-active .il-en { display: inline; }
+    .en-active .il-am { display: none; }
+
+    @media (max-width: 700px) {
+      .programs-band { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .moments-band { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+      .nav-links { display: none; }
+      .cta-band { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo-circle"><i class="ti ti-books"></i></div>
+      <span class="nav-brand-name">Kassina Kids<span class="nav-brand-dot">.</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#" class="active"><span class="il-am">ዋና ገጽ</span><span class="il-en">Home</span></a>
+      <a href="#"><span class="il-am">ስለ እኛ</span><span class="il-en">About Us</span></a>
+      <a href="#"><span class="il-am">ፕሮግራሞች</span><span class="il-en">Programs</span></a>
+      <a href="#"><span class="il-am">ይዘቶች</span><span class="il-en">Content</span></a>
+      <a href="#"><span class="il-am">ያግኙን</span><span class="il-en">Contact</span></a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-am" onclick="setLang('am')">አማ</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="https://kassinakids.substack.com" target="_blank" class="btn-signup">
+        <span class="il-am">ይመዝገቡ</span><span class="il-en">Sign Up</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO — AMHARIC -->
+  <section class="hero lang-am">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-doodle">
+          <i class="ti ti-star"></i><i class="ti ti-rocket"></i><i class="ti ti-bell"></i>
+        </div>
+        <h1>ልጆቻችን ሕይወት ውስጥ <span>አስደናቂ ጊዜ</span> እንፈጥራለን</h1>
+        <p>ካሲና ኪድስ ለ7–11 ዓመት ህፃናት የተዘጋጁ መጽሐፍት፣ ቪዲዮዎች እና የእውቀት እድገት ሀብቶችን ያቀርባል — ደስታ እና ጉጉት ለምያጎለብቱ።</p>
+        <div class="hero-btns">
+          <a href="https://kassinakids.substack.com" target="_blank" class="btn-primary">
+            <i class="ti ti-sparkles"></i> ይጀምሩ
+          </a>
+          <a href="#" class="btn-outline">
+            <i class="ti ti-player-play"></i> ቪዲዮ ይመልከቱ
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-icon"><i class="ti ti-users"></i></div>
+            <div>
+              <div class="hero-stat-num">7.6k+</div>
+              <div class="hero-stat-label">ንቁ ተማሪዎች</div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon"><i class="ti ti-book"></i></div>
+            <div>
+              <div class="hero-stat-num">70+</div>
+              <div class="hero-stat-label">የይዘት ፕሮግራሞች</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-placeholder">
+          <i class="ti ti-photo"></i>
+          <span>የህፃናት ፎቶ ይጨምሩ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO — ENGLISH -->
+  <section class="hero lang-en">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-doodle">
+          <i class="ti ti-star"></i><i class="ti ti-rocket"></i><i class="ti ti-bell"></i>
+        </div>
+        <h1>We Put a Little <span>Magic</span> Into All Our Kids' Lives</h1>
+        <p>Kassina Kids brings together storybooks, videos, and cognitive development resources for children ages 7–11 — sparking joy and curiosity at every turn.</p>
+        <div class="hero-btns">
+          <a href="https://kassinakids.substack.com" target="_blank" class="btn-primary">
+            <i class="ti ti-sparkles"></i> Get Started
+          </a>
+          <a href="#" class="btn-outline">
+            <i class="ti ti-player-play"></i> Watch Demo
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-icon"><i class="ti ti-users"></i></div>
+            <div>
+              <div class="hero-stat-num">7.6k+</div>
+              <div class="hero-stat-label">Active students &amp; families</div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon"><i class="ti ti-book"></i></div>
+            <div>
+              <div class="hero-stat-num">70+</div>
+              <div class="hero-stat-label">Content programs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-placeholder">
+          <i class="ti ti-photo"></i>
+          <span>Add children's photo here</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS — AMHARIC -->
+  <div style="background:var(--bg); padding: 2.5rem 0;">
+    <div class="programs-band lang-am">
+      <div>
+        <div class="programs-label">ፕሮግራሞች
+          <p>ልጆቻችን አስተሳሰብ፣ ፈጠራ እና ግንኙነት እንዲያዳብሩ የሚረዱ ፕሮግራሞች።</p>
+        </div>
+      </div>
+      <div class="program-item">
+        <div class="program-item-icon"><i class="ti ti-brain"></i></div>
+        <h3>የፈጠራ አስተሳሰብ</h3>
+        <p>ህፃናት ችግር ፈቺ ሆነው እንዲያስቡ የሚያበረታቱ ታሪኮች እና ተግባራት።</p>
+        <a href="#" class="learn-more">ተጨማሪ ይወቁ <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="program-item">
+        <div class="program-item-icon"><i class="ti ti-books"></i></div>
+        <h3>ምስላዊ ታሪኮች</h3>
+        <p>ውብ ምስሎች ያሏቸው የህፃናት መጽሐፍት — ለማንበብ እና ለማዳመጥ።</p>
+        <a href="#" class="learn-more">ተጨማሪ ይወቁ <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="program-item">
+        <div class="program-item-icon"><i class="ti ti-brand-youtube"></i></div>
+        <h3>ዩቲዩብ ቻናል</h3>
+        <p>ቀልጣፋ እና ትምህርታዊ ቪዲዮዎች ለህፃናት እና ወላጆች።</p>
+        <a href="#" class="learn-more">ተጨማሪ ይወቁ <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- PROGRAMS — ENGLISH -->
+    <div class="programs-band lang-en">
+      <div>
+        <div class="programs-label">Programs
+          <p>Content and activities that develop thinking, creativity, and communication in young minds.</p>
+        </div>
+      </div>
+      <div class="program-item">
+        <div class="program-item-icon"><i class="ti ti-brain"></i></div>
+        <h3>Creative Thinking</h3>
+        <p>Stories and activities that encourage children to think like problem-solvers and innovators.</p>
+        <a href="#" class="learn-more">Learn More <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="program-item">
+        <div class="program-item-icon"><i class="ti ti-books"></i></div>
+        <h3>Illustrated Stories</h3>
+        <p>Beautifully illustrated children's books — perfect for reading aloud and independent reading.</p>
+        <a href="#" class="learn-more">Learn More <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="program-item">
+        <div class="program-item-icon"><i class="ti ti-brand-youtube"></i></div>
+        <h3>YouTube Channel</h3>
+        <p>Fun and educational videos for children and parents to enjoy together.</p>
+        <a href="#" class="learn-more">Learn More <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY DIFFERENT -->
+  <div class="section">
+    <div class="why-grid">
+      <div class="why-left lang-am">
+        <h2>ለምን ካሲና ኪድስ ከሌሎች ይለያል?</h2>
+        <p>ህፃናትን ከስር ሆኖ ለማሳደግ የሚያስፈልጉ ሁሉም ሀብቶች — ታሪኮች፣ ቪዲዮዎች እና የወላጅ ድጋፍ።</p>
+        <a href="https://kassinakids.substack.com" target="_blank" class="btn-primary">ይጀምሩ</a>
+      </div>
+      <div class="why-left lang-en">
+        <h2>Why are we different than others?</h2>
+        <p>Everything a child needs to thrive — stories, videos, and parent support — all in one place, rooted in cultural pride and cognitive science.</p>
+        <a href="https://kassinakids.substack.com" target="_blank" class="btn-primary">Get Started</a>
+      </div>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-card-icon green"><i class="ti ti-certificate"></i></div>
+          <h3><span class="il-am">ጥራት ያለው ይዘት</span><span class="il-en">Quality Content</span></h3>
+          <p><span class="il-am">በባለሙያ የተዘጋጁ ታሪኮች እና ቪዲዮዎች።</span><span class="il-en">Expertly crafted stories and videos for growing minds.</span></p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon yellow"><i class="ti ti-currency-dollar"></i></div>
+          <h3><span class="il-am">ተደራሽ ዋጋ</span><span class="il-en">Accessible Pricing</span></h3>
+          <p><span class="il-am">ለሁሉም ቤተሰብ የሚመች ዋጋ።</span><span class="il-en">Pricing designed to reach every family regardless of budget.</span></p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon green"><i class="ti ti-bulb"></i></div>
+          <h3><span class="il-am">ፈጠራ ማዕከል</span><span class="il-en">Creative Focus</span></h3>
+          <p><span class="il-am">ፈጠራ እና ጉጉት ለማዳበር የተዘጋጀ።</span><span class="il-en">Built to nurture imagination, not just memorization.</span></p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon yellow"><i class="ti ti-heart"></i></div>
+          <h3><span class="il-am">ባህላዊ ኩራት</span><span class="il-en">Cultural Pride</span></h3>
+          <p><span class="il-am">የኢትዮጵያ ታሪክ እና ባህልን የሚያንፀባርቁ ይዘቶች።</span><span class="il-en">Stories rooted in Ethiopian heritage and community values.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPULAR CONTENT -->
+  <div class="section" style="padding-top:0;">
+    <h2 class="section-title section-title-center lang-am">ታዋቂ ይዘቶቻችን</h2>
+    <p class="section-sub section-title-center lang-am">ህፃናት እና ወላጆች ከሚወዷቸው ይዘቶች</p>
+    <h2 class="section-title section-title-center lang-en">Our Popular Content</h2>
+    <p class="section-sub section-title-center lang-en">What kids and parents love most</p>
+    <div class="content-cards">
+      <div class="content-card">
+        <div class="content-card-thumb"><i class="ti ti-book-2"></i><span class="content-card-badge">NEW</span></div>
+        <div class="content-card-body">
+          <h3><span class="il-am">የካሲና ጀብዱ</span><span class="il-en">Kassina's Adventure</span></h3>
+          <p><span class="il-am">የፈጠራ አስተሳሰብ ታሪክ</span><span class="il-en">A creative thinking storybook</span></p>
+          <div class="content-card-meta">
+            <span><span class="il-am">ዕድሜ</span><span class="il-en">Age</span>: 7–9</span>
+            <span><span class="il-am">መጽሐፍ</span><span class="il-en">Book</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-thumb yellow-bg"><i class="ti ti-brand-youtube"></i><span class="content-card-badge">VIDEO</span></div>
+        <div class="content-card-body">
+          <h3><span class="il-am">አስደናቂ ሳይንስ</span><span class="il-en">Amazing Science</span></h3>
+          <p><span class="il-am">ልጆቹ ሳይንስ የሚወዱበት ቪዲዮ</span><span class="il-en">Making science fun for kids</span></p>
+          <div class="content-card-meta">
+            <span><span class="il-am">ዕድሜ</span><span class="il-en">Age</span>: 8–11</span>
+            <span><span class="il-am">ቪዲዮ</span><span class="il-en">Video</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-thumb"><i class="ti ti-puzzle"></i><span class="content-card-badge">ACTIVITY</span></div>
+        <div class="content-card-body">
+          <h3><span class="il-am">የአዕምሮ ጨዋታዎች</span><span class="il-en">Mind Games</span></h3>
+          <p><span class="il-am">አስተሳሰብ የሚያዳብሩ ተግባራት</span><span class="il-en">Cognitive activities and puzzles</span></p>
+          <div class="content-card-meta">
+            <span><span class="il-am">ዕድሜ</span><span class="il-en">Age</span>: 7–11</span>
+            <span><span class="il-am">ተግባር</span><span class="il-en">Activity</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOMENTS BAND -->
+  <div class="moments-band">
+    <div class="moments-text lang-am">
+      <h2>ከልጆቻችን ጋር ያሉ ቅጽበቶች</h2>
+      <p>ካሲና ኪድስ ቤተሰቦችን አንድ ያደርጋል — ታሪኮችን፣ ቪዲዮዎችን እና ትምህርቶችን አብሮ እየሄዱ።</p>
+      <a href="https://kassinakids.substack.com" target="_blank" class="btn-primary" style="width:fit-content;">ይጀምሩ</a>
+    </div>
+    <div class="moments-text lang-en">
+      <h2>A few moments with us</h2>
+      <p>Kassina Kids brings families together — sharing stories, watching videos, and growing through learning side by side.</p>
+      <a href="https://kassinakids.substack.com" target="_blank" class="btn-primary" style="width:fit-content;">Get Started</a>
+    </div>
+    <div class="moments-image">
+      <i class="ti ti-photo"></i>
+      <span><span class="il-am">ፎቶ ይጨምሩ</span><span class="il-en">Add photo here</span></span>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTORS / TEAM -->
+  <div class="section">
+    <h2 class="section-title section-title-center lang-am">የፈጠራ ቡድናችን</h2>
+    <p class="section-sub section-title-center lang-am">ካሲና ኪድስን ለህፃናት ያዘጋጁ ሰዎች</p>
+    <h2 class="section-title section-title-center lang-en">Our experienced creators</h2>
+    <p class="section-sub section-title-center lang-en">The people behind Kassina Kids</p>
+    <div class="teachers-grid">
+      <div class="teacher-card">
+        <div class="teacher-avatar g">AW</div>
+        <h3>Almaz W.</h3>
+        <p><span class="il-am">ደራሲ</span><span class="il-en">Author</span></p>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar y">BT</div>
+        <h3>Bekele T.</h3>
+        <p><span class="il-am">ምስል አርቲስት</span><span class="il-en">Illustrator</span></p>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar g">SF</div>
+        <h3>Sara F.</h3>
+        <p><span class="il-am">የቪዲዮ ፈጣሪ</span><span class="il-en">Video Creator</span></p>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar y">DM</div>
+        <h3>Dawit M.</h3>
+        <p><span class="il-am">የእውቀት ባለሙያ</span><span class="il-en">Learning Specialist</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <div>
+      <h2 class="lang-am">ለመጀመር ዝግጁ ነዎት?</h2>
+      <h2 class="lang-en">Ready to Join?</h2>
+      <p class="lang-am">ዛሬ ይቀላቀሉ እና ልጅዎ ዓለምን ለማወቅ ጉጉቱን ያሳድጉ።</p>
+      <p class="lang-en">Join today and help your child develop a lifelong love of learning, curiosity, and creativity.</p>
+      <br/>
+      <a href="https://kassinakids.substack.com" target="_blank" class="btn-primary" style="margin-top:0.5rem; width:fit-content;">
+        <span class="il-am">ይጀምሩ</span><span class="il-en">Get Started Now</span>
+        <i class="ti ti-arrow-right"></i>
+      </a>
+    </div>
+    <div class="cta-image"><i class="ti ti-books"></i></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <div class="footer-brand">Kassina Kids — Cognitive Development Network</div>
+      <div class="footer-copy lang-am">© 2026 ኮግኒቲቭ ዴቨሎፕመንት ኔትወርክ። መብቱ የተጠበቀ ነው።</div>
+      <div class="footer-copy lang-en">© 2026 Cognitive Development Network. All rights reserved.</div>
+    </div>
+    <a href="index.html" class="footer-back">
+      <i class="ti ti-arrow-left"></i>
+      <span class="il-am">ዋና ገጽ ተመለስ</span><span class="il-en">Back to main site</span>
+    </a>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      var isEn = lang === 'en';
+      document.documentElement.lang = lang;
+      document.body.classList.toggle('en-active', isEn);
+      document.getElementById('btn-en').classList.toggle('active', isEn);
+      document.getElementById('btn-am').classList.toggle('active', !isEn);
+    }
+  </script>
+</body>
+</html>
