@@ -1,0 +1,263 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: images
+public_folder: /images
+
+locale: en
+
+collections:
+  - name: homepage
+    label: Homepage
+    files:
+      - label: Homepage Content
+        name: homepage
+        file: content/homepage.json
+        fields:
+          - label: "Hero badge (Amharic)"
+            name: hero_badge_am
+            widget: string
+          - label: "Hero badge (English)"
+            name: hero_badge_en
+            widget: string
+          - label: "Hero headline (Amharic)"
+            name: hero_headline_am
+            widget: string
+          - label: "Hero headline (English)"
+            name: hero_headline_en
+            widget: string
+          - label: "Hero subtext (Amharic)"
+            name: hero_subtext_am
+            widget: text
+          - label: "Hero subtext (English)"
+            name: hero_subtext_en
+            widget: text
+          - label: "Hero button (Amharic)"
+            name: hero_cta_am
+            widget: string
+          - label: "Hero button (English)"
+            name: hero_cta_en
+            widget: string
+          - label: "Kassina Kids — card title"
+            name: kassina_title
+            widget: string
+          - label: "Kassina Kids — description (Amharic)"
+            name: kassina_desc_am
+            widget: text
+          - label: "Kassina Kids — description (English)"
+            name: kassina_desc_en
+            widget: text
+          - label: "Kassina Kids — Substack URL"
+            name: kassina_substack
+            widget: string
+          - label: "Ye'abinet — card title"
+            name: yeabinet_title
+            widget: string
+          - label: "Ye'abinet — description (Amharic)"
+            name: yeabinet_desc_am
+            widget: text
+          - label: "Ye'abinet — description (English)"
+            name: yeabinet_desc_en
+            widget: text
+          - label: "Ye'abinet — Substack URL"
+            name: yeabinet_substack
+            widget: string
+          - label: "Podcast — coming date (Amharic)"
+            name: podcast_coming_am
+            widget: string
+          - label: "Podcast — coming date (English)"
+            name: podcast_coming_en
+            widget: string
+          - label: "Social — YouTube URL"
+            name: social_youtube
+            widget: string
+            required: false
+          - label: "Social — Instagram URL"
+            name: social_instagram
+            widget: string
+            required: false
+          - label: "Social — X / Twitter URL"
+            name: social_x
+            widget: string
+            required: false
+          - label: "Social — Facebook URL"
+            name: social_facebook
+            widget: string
+            required: false
+          - label: "Social — LinkedIn URL"
+            name: social_linkedin
+            widget: string
+            required: false
+
+  - name: kassina_kids
+    label: Kassina Kids page
+    files:
+      - label: Kassina Kids Content
+        name: kassina_kids
+        file: content/kassina-kids.json
+        fields:
+          - label: "Hero headline (Amharic)"
+            name: hero_headline_am
+            widget: string
+          - label: "Hero headline (English)"
+            name: hero_headline_en
+            widget: string
+          - label: "Hero subtext (Amharic)"
+            name: hero_subtext_am
+            widget: text
+          - label: "Hero subtext (English)"
+            name: hero_subtext_en
+            widget: text
+          - label: "Substack URL"
+            name: substack_url
+            widget: string
+          - label: "Program 1 — title (Amharic)"
+            name: prog1_title_am
+            widget: string
+          - label: "Program 1 — title (English)"
+            name: prog1_title_en
+            widget: string
+          - label: "Program 1 — description (Amharic)"
+            name: prog1_desc_am
+            widget: text
+          - label: "Program 1 — description (English)"
+            name: prog1_desc_en
+            widget: text
+          - label: "Program 2 — title (Amharic)"
+            name: prog2_title_am
+            widget: string
+          - label: "Program 2 — title (English)"
+            name: prog2_title_en
+            widget: string
+          - label: "Program 2 — description (Amharic)"
+            name: prog2_desc_am
+            widget: text
+          - label: "Program 2 — description (English)"
+            name: prog2_desc_en
+            widget: text
+          - label: "Program 3 — title (Amharic)"
+            name: prog3_title_am
+            widget: string
+          - label: "Program 3 — title (English)"
+            name: prog3_title_en
+            widget: string
+          - label: "Program 3 — description (Amharic)"
+            name: prog3_desc_am
+            widget: text
+          - label: "Program 3 — description (English)"
+            name: prog3_desc_en
+            widget: text
+          - label: "Stat 1 — number"
+            name: stat1_num
+            widget: string
+          - label: "Stat 1 — label (Amharic)"
+            name: stat1_label_am
+            widget: string
+          - label: "Stat 1 — label (English)"
+            name: stat1_label_en
+            widget: string
+          - label: "Stat 2 — number"
+            name: stat2_num
+            widget: string
+          - label: "Stat 2 — label (Amharic)"
+            name: stat2_label_am
+            widget: string
+          - label: "Stat 2 — label (English)"
+            name: stat2_label_en
+            widget: string
+
+  - name: yeabinet
+    label: "Ye'abinet page"
+    files:
+      - label: "Ye'abinet Content"
+        name: yeabinet
+        file: content/yeabinet.json
+        fields:
+          - label: "Hero headline (Amharic)"
+            name: hero_headline_am
+            widget: string
+          - label: "Hero headline (English)"
+            name: hero_headline_en
+            widget: string
+          - label: "Hero tagline (Amharic)"
+            name: hero_tagline_am
+            widget: text
+          - label: "Hero tagline (English)"
+            name: hero_tagline_en
+            widget: text
+          - label: "Substack URL"
+            name: substack_url
+            widget: string
+          - label: "Stat 1 — number"
+            name: stat1_num
+            widget: string
+          - label: "Stat 1 — label (Amharic)"
+            name: stat1_label_am
+            widget: string
+          - label: "Stat 1 — label (English)"
+            name: stat1_label_en
+            widget: string
+          - label: "Stat 2 — number"
+            name: stat2_num
+            widget: string
+          - label: "Stat 2 — label (Amharic)"
+            name: stat2_label_am
+            widget: string
+          - label: "Stat 2 — label (English)"
+            name: stat2_label_en
+            widget: string
+          - label: "Stat 3 — number"
+            name: stat3_num
+            widget: string
+          - label: "Stat 3 — label (Amharic)"
+            name: stat3_label_am
+            widget: string
+          - label: "Stat 3 — label (English)"
+            name: stat3_label_en
+            widget: string
+          - label: "Testimonial 1 — quote (Amharic)"
+            name: t1_quote_am
+            widget: text
+          - label: "Testimonial 1 — quote (English)"
+            name: t1_quote_en
+            widget: text
+          - label: "Testimonial 1 — name"
+            name: t1_name
+            widget: string
+          - label: "Testimonial 1 — role (Amharic)"
+            name: t1_role_am
+            widget: string
+          - label: "Testimonial 1 — role (English)"
+            name: t1_role_en
+            widget: string
+          - label: "Testimonial 2 — quote (Amharic)"
+            name: t2_quote_am
+            widget: text
+          - label: "Testimonial 2 — quote (English)"
+            name: t2_quote_en
+            widget: text
+          - label: "Testimonial 2 — name"
+            name: t2_name
+            widget: string
+          - label: "Testimonial 2 — role (Amharic)"
+            name: t2_role_am
+            widget: string
+          - label: "Testimonial 2 — role (English)"
+            name: t2_role_en
+            widget: string
+          - label: "Testimonial 3 — quote (Amharic)"
+            name: t3_quote_am
+            widget: text
+          - label: "Testimonial 3 — quote (English)"
+            name: t3_quote_en
+            widget: text
+          - label: "Testimonial 3 — name"
+            name: t3_name
+            widget: string
+          - label: "Testimonial 3 — role (Amharic)"
+            name: t3_role_am
+            widget: string
+          - label: "Testimonial 3 — role (English)"
+            name: t3_role_en
+            widget: string
